@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity Advice Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header>
+  <p>Wellbeing with Movement</p>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="form.html" aria-current="page">Tailoring Form</a></li>
+      <li><a href="information.html">More Info</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>Get a personalised activity programme</h1>
+  <p>Fill in the following questions and receive a programme that you can do anywhere, anytime!</p>
+  <p>This site is part of a student project. This is not medical advice. Check with a healthcare provider before starting something new.</p>
+  <p id="js-warning">This form needs JavaScript to work.</p>
+  <form method="post" id="form">
+    <label for="fname">What is your first name?</label>
+    <input type="text" id="fname" name="fname">
+    <fieldset>
+        <legend>Cancer specific information</legend>
+        <label for="diag_date">What month and year was your most recent cancer diagnosis?</label>
+        <input type="month" id="diag_date" name="diag_date">
+        <label for="cancer">What type of cancer was your most recent diagnosis? (required)</label>
+        <select id="cancer" name="cancer" required>
+          <option value="">Please choose one...</option>  
+          <option value="breast">Breast</option>
+          <option value="bowel">Bowel</option>
+          <option value="lung">Lung</option>
+          <option value="prostate">Prostate</option>
+        </select>
+        <fieldset>
+          <legend>What types of treatments did/do you have? Check all that apply.</legend>
+          <input type="checkbox" id="surgery" name="treatments" value="surgery">
+          <label for="surgery">Surgery</label>
+          <input type="checkbox" id="chemo" name="treatments" value="chemo">
+          <label for="chemo">Chemotherapy</label>
+          <input type="checkbox" id="rad" name="treatments" value="rad">
+          <label for="rad">Radiation Therapy</label>
+          <input type="checkbox" id="immune" name="treatments" value="immune">
+          <label for="immune">Immune or Targeted Therapy</label>
+          <input type="checkbox" id="hormone" name="treatments" value="hormone">
+          <label for="hormone">Hormone or Endocrine Therapy</label>
+        </fieldset>
+    </fieldset>
+    <fieldset> <!--If answer is yes for this question, it will lead to some cancer-related info and breathing exercises-->
+      <legend>Has a healthcare professional recently told you not to exercise? (required)</legend>
+      <input type="radio" id="hcp_no" name="hcp_advice" value="hcp_no" required>
+      <label for="hcp_no">No</label>
+      <input type="radio" id="hcp_yes" name="hcp_advice" value="hcp_yes">
+      <label for="hcp_yes">Yes</label>
+    </fieldset>
+    <fieldset>
+      <legend>In the last 10 years, how would you rate your physical activity experience? (required)</legend>
+      <input type="radio" id="no_exp" name="PA_experience" value="no_exp" required>
+      <label for="no_exp">No experience</label>
+      <input type="radio" id="some_exp" name="PA_experience" value="some_exp">
+      <label for="some_exp">Some experience</label>
+      <input type="radio" id="lots_exp" name="PA_experience" value="lots_exp">
+      <label for="lots_exp">A lot of experience</label>
+    </fieldset>
+    <fieldset>
+      <legend>How would you rate your ability to perform physical activity? (required)</legend>
+      <input type="radio" id="no_conf" name="PA_confidence" value="no_conf" required>
+      <label for="no_conf">Not confident at all</label>
+      <input type="radio" id="some_conf" name="PA_confidence" value="some_conf">
+      <label for="some_conf">Somewhat confident</label>
+      <input type="radio" id="very_conf" name="PA_confidence" value="very_conf">
+      <label for="very_conf">Very confident</label>
+    </fieldset>
+    <fieldset>
+      <legend>Gym and Equipment access</legend>
+      <label for="gym_member">Do you currently have a membership to a gym or fitness centre?</label>
+      <select id="gym_member" name="gym_member">
+        <option value="">Please choose...</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+      <fieldset>
+        <legend>What type of equipment or places do you have easy access to? Choose all that apply.</legend>
+        <input type="checkbox" id="park" name="equipment" value="park">
+        <label for="park">Park</label>
+        <input type="checkbox" id="trails" name="equipment" value="trails">
+        <label for="trails">Walking paths or trails</label>
+        <input type="checkbox" id="r_bands" name="equipment" value="r_bands">
+        <label for="r_bands">Resistance bands</label>
+        <input type="checkbox" id="f_weights" name="equipment" value="f_weights">
+        <label for="f_weights">Heavy things like dumbbells</label>
+      </fieldset>
+      <label for="pcode">What is your postcode?</label>
+      <input type="text" id="pcode" name="postcode" autocomplete="postal-code" placeholder="e.g. S1 1WB">
+    </fieldset>
+    <input type="submit" value="Submit">
+  </form>
+  <section id="result" tabindex="-1" hidden></section>
+</main>
+
+<footer>
+    <p>Activity diagrams drawn by Titanus Studio. All advice is sourced from reputable academic sources.</p>
+</footer>
+
+</body>
+</html>
