@@ -39,7 +39,7 @@ nav ul {
 nav a[aria-current="page"] {font-weight: bold;}
 
 table {
-    width: 100%;
+    width: auto;
     border: 1px solid black; 
     border-collapse: collapse;
 }
@@ -48,4 +48,8 @@ th, td {
     text-align: left;
     border: 1px solid black; 
     padding: var(--space-s);
+}
+
+div.tablecontainer {
+    overflow-x: auto;
 }
