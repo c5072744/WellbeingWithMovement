@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activity Advice Form</title>
+  <title>Wellbeing with Movement Advice Form</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
@@ -12,6 +12,7 @@
 <body>
 
 <header>
+  <div class="container">
   <p>Wellbeing with Movement</p>
   <nav>
     <ul>
@@ -20,9 +21,10 @@
       <li><a href="information.html">More Info</a></li>
     </ul>
   </nav>
+  </div>
 </header>
 
-<main>
+<main class="container">
   <h1>Get a personalised activity programme</h1>
   <p>Fill in the following questions and receive a programme that you can do anywhere, anytime!</p>
   <p>This site is part of a student project. This is not medical advice. Check with a healthcare provider before starting something new.</p>
@@ -33,7 +35,7 @@
     <fieldset>
         <legend>Cancer specific information</legend>
         <label for="diag_date">What month and year was your most recent cancer diagnosis?</label>
-        <input type="month" id="diag_date" name="diag_date">
+        <input type="month" id="diag_date" name="diag_date" max="2026-10">
         <label for="cancer">What type of cancer was your most recent diagnosis? (required)</label>
         <select id="cancer" name="cancer" required>
           <option value="">Please choose one...</option>  
@@ -73,7 +75,7 @@
       <label for="lots_exp">A lot of experience</label>
     </fieldset>
     <fieldset>
-      <legend>How would you rate your ability to perform physical activity? (required)</legend>
+      <legend>How would you rate your confidence in your ability to perform physical activity? (required)</legend>
       <input type="radio" id="no_conf" name="PA_confidence" value="no_conf" required>
       <label for="no_conf">Not confident at all</label>
       <input type="radio" id="some_conf" name="PA_confidence" value="some_conf">
@@ -81,35 +83,19 @@
       <input type="radio" id="very_conf" name="PA_confidence" value="very_conf">
       <label for="very_conf">Very confident</label>
     </fieldset>
-    <fieldset>
-      <legend>Gym and Equipment access</legend>
-      <label for="gym_member">Do you currently have a membership to a gym or fitness centre?</label>
-      <select id="gym_member" name="gym_member">
-        <option value="">Please choose...</option>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-      <fieldset>
-        <legend>What type of equipment or places do you have easy access to? Choose all that apply.</legend>
-        <input type="checkbox" id="park" name="equipment" value="park">
-        <label for="park">Park</label>
-        <input type="checkbox" id="trails" name="equipment" value="trails">
-        <label for="trails">Walking paths or trails</label>
-        <input type="checkbox" id="r_bands" name="equipment" value="r_bands">
-        <label for="r_bands">Resistance bands</label>
-        <input type="checkbox" id="f_weights" name="equipment" value="f_weights">
-        <label for="f_weights">Heavy things like dumbbells</label>
-      </fieldset>
-      <label for="pcode">What is your postcode?</label>
-      <input type="text" id="pcode" name="postcode" autocomplete="postal-code" placeholder="e.g. S1 1WB">
-    </fieldset>
+    <label for="pcode">What is your postcode?</label>
+    <input type="text" id="pcode" name="postcode" autocomplete="postal-code" placeholder="e.g. S1 1WB">
     <input type="submit" value="Submit">
   </form>
-  <section id="result" tabindex="-1" hidden></section>
+  <section id="result" tabindex="-1" hidden>
+
+  </section>
 </main>
 
 <footer>
+    <div class="container">
     <p>Activity diagrams drawn by Titanus Studio. All advice is sourced from reputable academic sources.</p>
+    </div>
 </footer>
 
 </body>

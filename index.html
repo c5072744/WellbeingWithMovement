@@ -4,25 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activity Advice Form</title>
+  <title>Wellbeing with Movement Home</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
 </head>
 
 <body>
 
 <header>
+  <div class="container">
   <p>Wellbeing with Movement</p>
-  <nav>
+  <nav> <!--learned from https://www.w3schools.com/tags/tag_nav.asp-->
     <ul>
       <li><a href="index.html" aria-current="page">Home</a></li>
       <li><a href="form.html">Tailoring Form</a></li>
       <li><a href="information.html">More Info</a></li>
     </ul>
   </nav>
+  </div>
 </header>
 
-<main>
+<main class="container">
   <h1>Welcome to Wellbeing with Movement!</h1>
   <p>This app is intended to provide some tailored 
     activity advice to people who have had cancer. 
@@ -32,7 +33,8 @@
     Check with a healthcare provider before starting something new.</p>
   <a href="form.html" class="button">Get Started!</a>
   <details>
-    <summary>Who am I?</summary>
+    <summary><h2>Who am I?</h2></summary> <!--used this to model the details boxes https://www.w3schools.com/tags/tag_details.asp and 
+                                    https://www.geeksforgeeks.org/html/html5-details-tag/-->
     <p>
         My name is Cindy Forbes. I have been a researcher in physical activity and its effects on cancer for 15 years. 
         My research focuses on how to best deliver and embed wellbeing programmes into standard care for people with cancer.
@@ -40,7 +42,7 @@
     </p>
   </details> 
   <details>
-    <summary>Cancer and exercise: the basics</summary>
+    <summary><h2>Cancer and exercise: the basics</h2></summary>
     <p>
         Many medical societies and groups recognise the importance of being active throughout the cancer journey.
         Find more information here! 
@@ -50,7 +52,9 @@
 </main>
 
 <footer>
+    <div class="container">
     <p>Activity diagrams drawn by Titanus Studio. All advice is sourced from reputable academic sources.</p>
+    </div>
 </footer>
  
 </body>
