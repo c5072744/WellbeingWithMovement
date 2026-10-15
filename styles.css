@@ -1,6 +1,8 @@
 /* Style sheet for final assessment web application */
 
-*, *::before, *::after {box-sizing: border-box;}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
 :root {
     --space-s: 0.5rem;
@@ -36,18 +38,61 @@ nav ul {
     gap: var(--space-m);
 }
 
-nav a[aria-current="page"] {font-weight: bold;}
+nav a[aria-current="page"] {
+    font-weight: bold;
+}
+
+input[type="text"], input[type="month"], select {
+    padding: 10px;
+    margin: 8px 0;
+    display: block;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    padding: 10px;
+    margin: 8px 0;
+}
+
+input[type="checkbox"] + label, input[type="radio"] + label {
+    font-weight: normal;
+    margin-right: var(--space-m);
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #7ea8ce;
+    color: black;
+    font-weight: bold;
+    font-size: larger;
+    padding: 14px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+    background-color: #789dbf;
+}
+
+fieldset {
+    margin: 8px 0;
+}
+
+legend, label {
+    font-weight: bold;
+}
 
 table {
     width: 100%;
     table-layout: fixed;
-    border: 1px solid black; 
+    border: 1px solid black;
     border-collapse: collapse;
 }
 
 th, td {
     text-align: left;
-    border: 1px solid black; 
+    overflow-wrap: break-word;
+    border: 1px solid black;
     padding: var(--space-s);
 }
 
