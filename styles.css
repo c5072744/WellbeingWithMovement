@@ -23,6 +23,35 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+p {
+    max-width: 60rem;
+}
+
+.button {
+    display: block;
+    width: 20rem;
+    background-color: #7ea8ce;
+    color: black;
+    font-weight: bold;
+    font-size: larger;
+    text-decoration: none;
+    text-align: center;
+    padding: var(--space-m);
+    margin: 0 auto;
+    margin-bottom: var(--space-xl);
+    margin-top: var(--space-m);
+    border: none;
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: #789dbf;
+}
+
+summary h2 {
+    display: inline;
+}
+
 .container {
     max-width: 60rem;
     margin: 0 auto;
@@ -78,6 +107,11 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #789dbf;
+}
+
+img {
+    max-width: 50%;
+    height: auto;
 }
 
 fieldset {

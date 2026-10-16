@@ -25,10 +25,10 @@ const cancerAdvice = {
 };
 
 const treatmentAdvice = {
-    surgery: "After surgery, it's common to have fatigue, pain, and limited mobility. Starting out slow and building up physical activity can help recovery and overall well-being.", 
-    chemo: "Common chemotherapy side effects include fatigue, nausea, changes in sensation in your hands and feet. Staying hydrated and taking small sips of water during exercise is important to help combat these side effects.", 
-    rad: "Radiotherapy can cause fatigue, skin irritation, and pain or discomfort near the treatment area. Gentle flexibility and strength exercises can help keep muscles and joints from getting too stiff.", 
-    it_ht: "Immunotherapy and hormonal therapy may lead to fatigue, joint pain, and changes in mood or appetite. Prioritising rest and doing low-impact activities like walking or yoga are ways to be active without being too stressful."
+    surgery: "After surgery, it's common to have fatigue, pain, and limited mobility. Starting out slow and building up daily activity can help recovery and overall well-being.", 
+    chemo: "Common chemotherapy side effects include fatigue, nausea, changes in sensation in your hands and feet. Staying hydrated and taking small sips of water during your day is important to help combat these side effects.", 
+    rad: "Radiotherapy can cause fatigue, skin irritation, and pain or discomfort near the treatment area. Gentle flexibility and mobility activities can help keep muscles and joints from getting too stiff.", 
+    it_ht: "Immunotherapy and hormonal therapy may lead to fatigue, joint pain, and changes in mood or appetite. Prioritising rest and doing low-impact activities like walking or gentle stretches are ways to be active without it being too stressful."
 };
 
 const noExercise = {
