@@ -102,8 +102,11 @@ nav ul {
     gap: var(--space-m);
 }
 
-nav a[aria-current="page"] {
+nav a, nav a:visited {
     color: black;
+}
+
+nav a [aria-current="page"] {
     font-weight: bold;
 }
 
