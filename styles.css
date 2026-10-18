@@ -141,6 +141,7 @@ legend, label {
 
 table {
     width: 100%;
+    min-width: 25rem;
     table-layout: fixed;
     border: 1px solid black;
     border-collapse: collapse;
