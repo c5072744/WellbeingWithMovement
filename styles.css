@@ -84,16 +84,17 @@ summary h2 {
 }
 
 header {
-    background-color: var(--color-primary-hover);
+    background-color: var(--color-primary);
 }
 
 footer {
-    background-color: var(--color-primary-hover);
+    background-color: var(--color-primary);
     font-size: small;
 }
 
 nav ul {
     list-style: none;
+    color: black;
     margin: 0;
     padding: 0;
     display: flex;
