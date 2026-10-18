@@ -111,7 +111,8 @@ const exercises = {
         images: [
             "sit-stands-1.jpg", 
             "sit-stands-2.jpg",  
-            "sit-stands-3.jpg"
+            "sit-stands-3.jpg",
+            "sit-stands-4.jpg"
         ], 
         caption: "Sit up straight on the edge of a chair, feet flat on the floor. Cross your arms over your chest and keep your back straight. Then lean slightly forward and stand up. With the same form, slowly lower to sit back down in the chair."
     },
@@ -227,14 +228,14 @@ const exercises = {
 const weather = {
     "good": {
         codes: [0,1,2,3], 
-        content: "Looks like a good day to be active outside if you're able."
+        content: "Looks like a good day to be outside in your region, if you're able."
     },
     "okay": {
         codes: [45,48,51,53,55,61,80],
-        content: "Looks like a decent day to be active outside if you're able. Bring a coat or brolly!"
+        content: "Looks like a decent day to be outside in your region, if you're able. Bring a coat or brolly!"
     },
     "bad": {
         codes: [56,57,63,65,66,67,71,73,75,77,81,82,85,86,95,96,97,99],
-        content: "Looks like you might want to plan for inside activities today."
+        content: "Weather in your region shows you might want to plan for inside activities today."
     }
 }

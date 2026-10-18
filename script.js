@@ -9,15 +9,18 @@ const month = String(today.getMonth() + 1).padStart(2, '0');
 const currentMonth = `${year}-${month}`;
 
 document.getElementById("diag_date").setAttribute("max", currentMonth);
-
-const result = document.getElementById("result");
-
 /* adapted this method for setting max date to current month; 
 reference https://www.tutorialspoint.com/article/how-to-set-an-html-date-picker-max-date-to-today */
 
+const result = document.getElementById("result");
+const resultActions = document.getElementById("buttons");
+
+const printButton = document.getElementById("print");
+const restartButton = document.getElementById("restart");
+
 const form = document.getElementById("form");
 
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", async function(event) {
 
     event.preventDefault();
     
@@ -39,14 +42,13 @@ form.addEventListener("submit", function(event) {
 
     result.replaceChildren();
 
-    form.hidden = true;
-
     const heading = document.createElement("h2");
     heading.textContent = "Your Programme";
+    heading.setAttribute("tabindex", "-1");
     result.append(heading);
 
     const greeting = document.createElement("p");
-    greeting.textContent = `Hi, ${answers.firstName}.`;
+    greeting.textContent = `Hi ${answers.firstName}.`;
     result.append(greeting);
 
     const diagnosisRecency = getDiagnosisRecency(answers.diagnosisDate);
@@ -97,7 +99,7 @@ form.addEventListener("submit", function(event) {
         programme.exerciseList.forEach(function(item) {
             const exercise = exercises[item.id];
             const listItem = document.createElement("li");
-            const exerciseName = document.createElement("h4")
+            const exerciseName = document.createElement("h4");
             exerciseName.textContent = exercise.name;
             listItem.append(exerciseName);
 
@@ -120,17 +122,51 @@ form.addEventListener("submit", function(event) {
         });
 
         const programmeEnd = document.createElement("p");
-        programmeEnd.textContent = `Do this circuit ${programme.circuitRepeats} more time(s). Also try for ${programme.cardioMins} of a type of cardio you enjoy, like walking or cycling. For your cardio, aim for a ${programme.rpe} out of 10 in terms of effort.`
+        programmeEnd.textContent = `Do this circuit ${programme.circuitRepeats} more time(s). Also try for ${programme.cardioMins} minutes of a type of cardio you enjoy, like walking or cycling. For your cardio, aim for around a ${programme.rpe} out of 10 in terms of effort.`
 
         result.append(programmeEnd);
     }
 
-    result.hidden = false;
-    result.focus(); 
-    
-    console.log(answers, paLevel, programme);
+    let weatherPromise = null;
+    let weatherStatus = null;
 
+    if (answers.postcode && answers.postcode.trim() !== "") {
+    
+        weatherPromise = getWeatherAdvice(answers.postcode);
+
+        weatherStatus = document.createElement("p");
+        weatherStatus.textContent = "Checking weather in your area..."
+        weatherStatus.setAttribute("aria-live", "polite");
+        weatherStatus.id = "weather_status"
+        result.append(weatherStatus);
+    }
+
+    form.hidden = true;
+    result.hidden = false;
+    resultActions.hidden = false;
+    heading.focus(); 
+
+    if (weatherPromise) {
+
+        const statement = await weatherPromise;
+
+        weatherStatus.textContent = 
+            statement || "Weather information isn't available right now.";
+    }
 })
+
+printButton.addEventListener("click", function () {
+    window.print();
+});
+
+restartButton.addEventListener("click", function () {
+    form.reset();
+    result.replaceChildren();
+    result.hidden = true;
+    resultActions.hidden = true;
+    form.hidden = false;
+    document.getElementById("formHeading").focus(); 
+});
 
 function getPALevel(experience, confidence) {
     return difficultyMatrix[experience][confidence];
@@ -151,3 +187,53 @@ function getDiagnosisRecency(diagnosisDate) {
 
     return "notRecent";
 }
+
+function getWeatherStatement(code) {
+    for (const category of Object.values(weather)) {
+        if (category.codes.includes(code)) {
+            return category.content;
+        }
+    }
+
+    return null;
+}
+async function getWeatherAdvice(postcode) {
+    
+    try {
+    /*making sure the postcode is in a clean format*/
+    const cleanPostcode = postcode
+    .replace(/\s/g, "")
+    .toUpperCase();
+
+    /*sending cleaned postcode to api.postcodes.io*/
+    const postcodeResponse = await fetch(
+        `https://api.postcodes.io/postcodes/${encodeURIComponent(cleanPostcode)}`
+    );
+
+    if (!postcodeResponse.ok) {
+        throw new Error("Postcode lookup failed.");
+    }
+
+    const postcodeData = await postcodeResponse.json();
+
+    const longitude = postcodeData.result.longitude;
+    const latitude = postcodeData.result.latitude;
+
+    const weatherResponse = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=weather_code`
+    );
+
+    if (!weatherResponse.ok) {
+        throw new Error("Weather lookup failed.");
+    }
+
+    const weatherInfo = await weatherResponse.json();
+
+    const weatherCodeInfo = weatherInfo.current.weather_code;
+    return getWeatherStatement(weatherCodeInfo);
+    } catch (error) {
+        console.error("Weather information unavailable: ", error);
+        return null;
+    }
+}
+

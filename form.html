@@ -26,7 +26,7 @@
     </header>
 
     <main class="container">
-        <h1>Get a personalised activity programme</h1>
+        <h1 id="formHeading" tabindex="-1">Get a personalised activity programme</h1>
         <p>This site is part of a student project. This is not medical advice. Check with a healthcare provider before
             starting something new.</p>
         <p id="js-warning">This form needs JavaScript to work.</p>
@@ -85,13 +85,15 @@
                 <input type="radio" id="very_conf" name="PA_confidence" value="very_conf">
                 <label for="very_conf">Very confident</label>
             </fieldset>
-            <label for="pcode">What is your postcode?</label>
-            <input type="text" id="pcode" name="postcode" autocomplete="postal-code" placeholder="e.g. S1 1WB">
+            <label for="pcode">Enter your postcode in the format AA1 1AA.</label>
+            <input type="text" id="pcode" name="postcode" autocomplete="postal-code" title="Enter a UK postcode, for example S1 1WB." placeholder="e.g. S1 1WB" pattern="[A-Za-z]{1,2}[0-9][A-Za-z0-9]?\s*[0-9][A-Za-z]{2}" maxlength="8">
             <input type="submit" value="Submit">
         </form>
-        <section id="result" tabindex="-1" hidden>
-
-        </section>
+        <section id="result" hidden></section>
+        <div class="container buttonrow" id="buttons" hidden>
+            <button type="button" id="print">Print programme</button>
+            <button type="button" id="restart">Start again</button>
+        </div>
     </main>
 
     <footer>
