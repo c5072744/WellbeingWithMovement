@@ -103,6 +103,7 @@ nav ul {
 }
 
 nav a[aria-current="page"] {
+    color: black;
     font-weight: bold;
 }
 
