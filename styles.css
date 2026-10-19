@@ -177,7 +177,8 @@ div.tablecontainer {
 
 /* to develop media print preview:
     https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media
-    https://www.w3schools.com/css/css3_mediaqueries.asp */
+    https://www.w3schools.com/css/css3_mediaqueries.asp 
+    https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::after*/
 
 @media print {
     /*streamlining the print*/
