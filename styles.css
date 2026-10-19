@@ -196,4 +196,8 @@ div.tablecontainer {
     #result ol > li {
         break-inside: avoid;
     }
+
+    #result a[href]::after {
+        content: " (" attr(href) ")"
+    };
 }
