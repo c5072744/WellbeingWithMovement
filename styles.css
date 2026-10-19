@@ -1,14 +1,18 @@
 /* Style sheet for final assessment web application */
+/* used throughout to style form inputs https://www.w3schools.com/css/css_forms.asp */
 
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+/* used https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:focus-visible */
 :focus-visible {
     outline: 2px solid black;
     outline-offset: 3px;
 }
 
+/* used to declare custom properties for styles that were repeated
+    https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties */
 :root {
     --space-s: 0.5rem;
     --space-m: 1rem;
@@ -37,6 +41,9 @@ input[type="submit"] {
     border: none;
     border-radius: 4px;
 }
+
+/* used to style pseudo classes
+    https://www.geeksforgeeks.org/css/css-pseudo-classes/ */
 
 .button:hover,
 button:hover,
@@ -76,6 +83,8 @@ summary h2 {
     padding: var(--space-m);
 }
 
+/* used for buttonrow and nav:
+    https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox */
 .buttonrow:not([hidden]) {
     display: flex;
     gap: var(--space-l);
@@ -140,6 +149,13 @@ legend, label {
     font-weight: bold;
 }
 
+/* used to style table:
+    https://www.w3schools.com/html/html_tables.asp
+    https://www.w3schools.com/css/css_table_responsive.asp
+    https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/table-layout 
+    https://www.w3schools.com/css/css_overflow.asp 
+    https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow-x */
+
 table {
     width: 100%;
     min-width: 25rem;
@@ -158,6 +174,10 @@ th, td {
 div.tablecontainer {
     overflow-x: auto;
 }
+
+/* to develop media print preview:
+    https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media
+    https://www.w3schools.com/css/css3_mediaqueries.asp */
 
 @media print {
     /*streamlining the print*/

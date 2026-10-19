@@ -1,4 +1,7 @@
 /* javascript file for Wellbeing with Movement form data */
+/* used https://developer.mozilla.org/en-US/docs/Web/API/FormData and 
+    https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects
+    for guidance on the structure of the below data to allow use in the results output.  */
 
 const recencyStatement = {
     recent: "Since your diagnosis was not too long ago, you're likely still feeling a few side effects.", 

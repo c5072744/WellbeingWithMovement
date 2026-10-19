@@ -1,4 +1,9 @@
 /* javascript file for Wellbeing with Movement form actions */
+/* used https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Object_basics 
+    and https://www.w3schools.com/js/js_array_const.asp to help general understanding of how to use 
+    objects, arrays, loops, and conditional/if statements. For eventListener methods, used
+    https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener 
+    async: https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/async*/
 
 document.getElementById("js-warning").hidden = true;
 
@@ -40,8 +45,10 @@ form.addEventListener("submit", async function(event) {
     const paLevel = getPALevel(answers.paExperience, answers.paConfidence);
     const programme = paLevels[paLevel];
 
+    /* used https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren*/
     result.replaceChildren();
 
+    /* used https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement*/
     const heading = document.createElement("h2");
     heading.textContent = "Your Programme";
     heading.setAttribute("tabindex", "-1");
@@ -132,6 +139,7 @@ form.addEventListener("submit", async function(event) {
 
     if (answers.postcode && answers.postcode.trim() !== "") {
     
+        /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise */
         weatherPromise = getWeatherAdvice(answers.postcode);
 
         weatherStatus = document.createElement("p");
@@ -139,6 +147,9 @@ form.addEventListener("submit", async function(event) {
         weatherStatus.setAttribute("aria-live", "polite");
         weatherStatus.id = "weather_status"
         result.append(weatherStatus);
+
+        /* to politely announce waether info once updated:
+        https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live */
     }
 
     form.hidden = true;
@@ -188,6 +199,8 @@ function getDiagnosisRecency(diagnosisDate) {
     return "notRecent";
 }
 
+/* postcode lookup used https://postcodes.io/docs/api/lookup-postcode/ and 
+    weather lookup used https://api.open-meteo.com/v1/forecast?latitude={}&longitude={}&current=weather_code */
 function getWeatherStatement(code) {
     for (const category of Object.values(weather)) {
         if (category.codes.includes(code)) {
@@ -200,15 +213,25 @@ function getWeatherStatement(code) {
 async function getWeatherAdvice(postcode) {
     
     try {
-    /*making sure the postcode is in a clean format*/
+    /* making sure the postcode is in a clean format*/
+    /* used https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+        and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim
+        and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase
+        to clean the postcode and allow flexibility as recommended by Gov.UK for inputting postcodes 
+        https://design-system.service.gov.uk/patterns/addresses/ */
     const cleanPostcode = postcode
     .replace(/\s/g, "")
     .toUpperCase();
 
     /*sending cleaned postcode to api.postcodes.io*/
+    /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent */
     const postcodeResponse = await fetch(
         `https://api.postcodes.io/postcodes/${encodeURIComponent(cleanPostcode)}`
     );
+
+    /* used https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch and 
+        https://www.w3schools.com/js/js_api_fetch.asp to structure the await/fetch and 
+        try/if/catch sequences */
 
     if (!postcodeResponse.ok) {
         throw new Error("Postcode lookup failed.");
